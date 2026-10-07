@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 64" width="270" height="64" fill="none">
+  <!-- Bear Icon Badge -->
+  <g transform="translate(0, 0)">
+    <!-- Soft warm background disc -->
+    <rect x="0" y="0" width="64" height="64" rx="20" fill="url(#bearGrad)" />
+    
+    <!-- Bear Ears -->
+    <circle cx="16" cy="18" r="9" fill="#B45309" />
+    <circle cx="16" cy="18" r="5" fill="#FDE68A" />
+    <circle cx="48" cy="18" r="9" fill="#B45309" />
+    <circle cx="48" cy="18" r="5" fill="#FDE68A" />
+    
+    <!-- Bear Head Base -->
+    <ellipse cx="32" cy="35" rx="22" ry="19" fill="#D97706" />
+    
+    <!-- Cheeks & Muzzle -->
+    <ellipse cx="32" cy="41" rx="13" ry="10" fill="#FEF3C7" />
+    
+    <!-- Cute Bear Nose -->
+    <path d="M28 37 C28 35.5 36 35.5 36 37 C36 40 28 40 28 37 Z" fill="#78350F" />
+    
+    <!-- Mouth curve -->
+    <path d="M30 42 Q32 44.5 34 42" stroke="#78350F" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    
+    <!-- Eyes with cute highlight -->
+    <circle cx="24" cy="31" r="2.8" fill="#1C1917" />
+    <circle cx="23.2" cy="30.2" r="0.9" fill="#FFFFFF" />
+    
+    <circle cx="40" cy="31" r="2.8" fill="#1C1917" />
+    <circle cx="39.2" cy="30.2" r="0.9" fill="#FFFFFF" />
+    
+    <!-- Soft Blushing cheeks -->
+    <ellipse cx="19" cy="37" rx="3.5" ry="2" fill="#F87171" opacity="0.4" />
+    <ellipse cx="45" cy="37" rx="3.5" ry="2" fill="#F87171" opacity="0.4" />
+
+    <!-- Little Green Sprout / Leaf above ear -->
+    <path d="M44 8 C47 3 53 4 54 8 C53 12 47 11 44 8 Z" fill="#10B981" />
+  </g>
+  
+  <!-- Text Brand -->
+  <text x="76" y="42" font-family="'Plus Jakarta Sans', 'Outfit', 'Segoe UI', sans-serif" font-weight="900" font-size="25" letter-spacing="0.8" fill="#FFFFFF">
+    BOUNEY <tspan fill="#F59E0B">BEARS</tspan>
+  </text>
+  
+  <defs>
+    <linearGradient id="bearGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF3C7" />
+      <stop offset="100%" stop-color="#FDE68A" />
+    </linearGradient>
+  </defs>
+</svg>

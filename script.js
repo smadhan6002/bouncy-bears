@@ -1,0 +1,490 @@
+/**
+ * BOUNEY BEARS — CLIENT INTERACTION ENGINE
+ * Powered by centralized BOUNEY_CONFIG
+ */
+
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+
+  var config = window.BOUNEY_CONFIG || {};
+
+  // 1. DYNAMIC CONTACT & WHATSAPP DATA BINDING
+  function bindDynamicConfig() {
+    if (!config.contact) return;
+
+    // Direct WhatsApp links
+    document.querySelectorAll('[data-whatsapp-action]').forEach(function (el) {
+      var customMsg = el.getAttribute('data-whatsapp-msg');
+      el.href = config.getWhatsAppUrl(customMsg);
+      el.setAttribute('target', '_blank');
+      el.setAttribute('rel', 'noopener noreferrer');
+    });
+
+    // Direct Phone links
+    document.querySelectorAll('[data-phone-primary]').forEach(function (el) {
+      el.href = 'tel:' + config.contact.primaryPhoneRaw;
+      if (el.classList.contains('bind-text')) {
+        el.textContent = config.contact.primaryPhone;
+      }
+    });
+
+    document.querySelectorAll('[data-phone-secondary]').forEach(function (el) {
+      el.href = 'tel:' + config.contact.secondaryPhoneRaw;
+      if (el.classList.contains('bind-text')) {
+        el.textContent = config.contact.secondaryPhone;
+      }
+    });
+
+    // Direct Email links
+    document.querySelectorAll('[data-email-bind]').forEach(function (el) {
+      el.href = 'mailto:' + config.contact.email;
+      if (el.classList.contains('bind-text')) {
+        el.textContent = config.contact.email;
+      }
+    });
+  }
+
+  bindDynamicConfig();
+
+  // 2. STICKY NAVBAR SCROLL ELEVATION
+  var siteHeader = document.getElementById('siteHeader');
+  function handleNavbarScroll() {
+    if (!siteHeader) return;
+    if (window.scrollY > 30) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+  handleNavbarScroll();
+
+  // 3. RESPONSIVE MOBILE NAVIGATION DRAWER
+  var mobileToggle = document.getElementById('mobileToggle');
+  var mobileDrawer = document.getElementById('mobileDrawer');
+  var drawerClose = document.getElementById('drawerClose');
+  var drawerOverlay = document.getElementById('drawerOverlay');
+  var drawerLinks = document.querySelectorAll('.drawer-link');
+
+  function openDrawer() {
+    if (!mobileDrawer) return;
+    mobileToggle && mobileToggle.classList.add('active');
+    mobileDrawer.classList.add('active');
+    drawerOverlay && drawerOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    if (!mobileDrawer) return;
+    mobileToggle && mobileToggle.classList.remove('active');
+    mobileDrawer.classList.remove('active');
+    drawerOverlay && drawerOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  mobileToggle && mobileToggle.addEventListener('click', function () {
+    if (mobileDrawer && mobileDrawer.classList.contains('active')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  drawerClose && drawerClose.addEventListener('click', closeDrawer);
+  drawerOverlay && drawerOverlay.addEventListener('click', closeDrawer);
+
+  drawerLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      setTimeout(closeDrawer, 180);
+    });
+  });
+
+  // 4. ACTIVE NAV LINK SCROLL TRACKING
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveNavLink() {
+    var scrollY = window.pageYOffset + 120;
+    sections.forEach(function (current) {
+      var sectionHeight = current.offsetHeight;
+      var sectionTop = current.offsetTop;
+      var sectionId = current.getAttribute('id');
+
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach(function (link) {
+          if (link.getAttribute('href') === '#' + sectionId) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+
+  // 5. PROGRAM CARD -> ENQUIRY FORM AUTO-SELECT
+  document.querySelectorAll('.program-enquire-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var programName = this.getAttribute('data-program');
+      var programSelect = document.getElementById('enquiryProgram');
+      if (programSelect && programName) {
+        programSelect.value = programName;
+      }
+      var enquirySection = document.getElementById('enquiry');
+      if (enquirySection) {
+        enquirySection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // 6. GALLERY & LIGHTBOX MODAL (DYNAMIC)
+  var dynamicContainer = document.getElementById('dynamic-galleries-container');
+  var lightboxModal = document.getElementById('lightboxModal');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lightboxClose = document.getElementById('lightboxClose');
+  var lightboxPrev = document.getElementById('lightboxPrev');
+  var lightboxNext = document.getElementById('lightboxNext');
+
+  var currentLightboxIndex = 0;
+  var currentLightboxEventData = []; // Array of image objects for the currently open event
+
+  // Event Gallery Data
+  var eventsData = {
+    "Annual Day": [
+      "IMG-20250413-WA0053.jpg", "IMG-20250413-WA0060.jpg", "IMG-20250413-WA0061.jpg", "IMG-20250413-WA0066.jpg", "IMG-20250413-WA0075.jpg", "IMG-20250413-WA0079.jpg", "IMG-20250413-WA0084.jpg", "IMG-20250413-WA0085.jpg", "IMG-20250413-WA0093.jpg", "IMG-20250413-WA0105.jpg", "IMG-20250413-WA0116.jpg", "IMG-20250413-WA0118.jpg", "IMG-20250413-WA0144.jpg", "IMG-20250413-WA0149.jpg", "IMG-20250413-WA0151.jpg", "IMG-20250413-WA0168.jpg", "IMG-20250413-WA0174.jpg", "IMG-20250413-WA0184.jpg", "IMG-20250413-WA0187.jpg", "IMG-20250413-WA0190.jpg", "IMG-20250413-WA0202.jpg", "IMG-20250413-WA0207.jpg", "IMG-20250413-WA0215.jpg", "IMG-20250413-WA0257.jpg", "IMG-20250413-WA0278.jpg", "IMG-20250413-WA0296.jpg", "IMG-20250413-WA0298.jpg", "IMG-20250413-WA0310.jpg", "IMG-20250413-WA0314.jpg", "IMG-20250413-WA0321.jpg", "IMG-20250413-WA0324.jpg", "IMG-20250413-WA0342.jpg", "IMG-20250413-WA0343.jpg"
+    ],
+    "field trip and sports day": [
+      "WhatsApp Image 2026-10-06 at 7.49.30 PM (2).jpeg", "WhatsApp Image 2026-10-06 at 7.49.31 PM (1).jpeg", "WhatsApp Image 2026-10-06 at 7.49.31 PM (2).jpeg", "WhatsApp Image 2026-10-06 at 7.49.31 PM.jpeg", "WhatsApp Image 2026-10-06 at 7.49.32 PM (1).jpeg", "WhatsApp Image 2026-10-06 at 7.49.32 PM (2).jpeg", "WhatsApp Image 2026-10-06 at 7.49.32 PM (3).jpeg", "WhatsApp Image 2026-10-06 at 7.49.32 PM.jpeg", "WhatsApp Image 2026-10-06 at 7.49.33 PM (1).jpeg", "WhatsApp Image 2026-10-06 at 7.49.33 PM (2).jpeg", "WhatsApp Image 2026-10-06 at 7.49.33 PM (3).jpeg", "WhatsApp Image 2026-10-06 at 7.49.33 PM.jpeg", "WhatsApp Image 2026-10-06 at 7.49.34 PM.jpeg", "WhatsApp Image 2026-10-06 at 7.49.35 PM (1).jpeg", "WhatsApp Image 2026-10-06 at 7.49.35 PM (3).jpeg", "WhatsApp Image 2026-10-06 at 7.49.35 PM.jpeg", "WhatsApp Image 2026-10-06 at 7.49.37 PM (2).jpeg", "WhatsApp Image 2026-10-06 at 7.49.38 PM (1).jpeg", "WhatsApp Image 2026-10-06 at 7.49.38 PM.jpeg", "WhatsApp Image 2026-10-06 at 7.49.39 PM (1).jpeg", "WhatsApp Image 2026-10-06 at 7.49.39 PM (3).jpeg"
+    ],
+    "Ganesh chaturthi": [
+      "IMG-20250826-WA0012.jpg", "IMG-20250826-WA0016.jpg", "IMG-20250826-WA0031.jpg", "IMG-20250826-WA0032.jpg", "IMG-20250826-WA0035.jpg", "IMG-20250826-WA0036.jpg", "IMG-20250826-WA0048.jpg", "IMG-20250826-WA0063.jpg", "IMG-20250826-WA0065.jpg", "IMG-20250826-WA0067.jpg", "IMG-20250826-WA0071.jpg", "IMG-20250826-WA0098.jpg"
+    ],
+    "pongal cebration": [
+      "IMG-20240112-WA0119.jpg", "IMG-20240112-WA0122.jpg", "IMG-20240112-WA0139.jpg", "IMG-20240112-WA0143.jpg", "IMG-20240112-WA0146.jpg", "IMG-20240112-WA0149.jpg"
+    ],
+    "Christmas": [
+      "IMG-20251223-WA0011.jpg", "IMG-20251223-WA0020.jpg", "IMG-20251223-WA0022.jpg", "IMG-20251223-WA0024.jpg", "IMG-20251223-WA0025.jpg", "IMG-20251223-WA0027.jpg", "IMG-20251223-WA0035.jpg", "IMG-20251223-WA0052.jpg", "IMG-20251223-WA0061.jpg", "IMG-20251223-WA0068.jpg", "IMG-20251223-WA0079.jpg", "IMG-20251223-WA0086.jpg", "IMG-20251223-WA0088.jpg", "IMG-20251223-WA0089.jpg", "IMG-20251223-WA0092.jpg", "IMG-20251223-WA0103.jpg"
+    ],
+    "Summer camp": [
+      "IMG-20250312-WA0006.jpg", "IMG-20250312-WA0007.jpg", "IMG-20250312-WA0042.jpg", "IMG-20250312-WA0046.jpg", "IMG-20250312-WA0047.jpg", "IMG-20250312-WA0048.jpg", "IMG-20250312-WA0050.jpg", "IMG-20250312-WA0051.jpg", "IMG-20250312-WA0052.jpg", "IMG-20250312-WA0054.jpg", "IMG-20250312-WA0056.jpg", "IMG-20250312-WA0058.jpg", "IMG-20250312-WA0064.jpg", "IMG-20250312-WA0073.jpg", "IMG-20250312-WA0079.jpg", "IMG-20250312-WA0093.jpg", "IMG-20250312-WA0094.jpg", "IMG-20250312-WA0100.jpg", "IMG-20250312-WA0104.jpg", "IMG-20250312-WA0106.jpg", "IMG_20250421_121756.jpg", "IMG_20250423_122755.jpg", "IMG_20250426_120809.jpg", "IMG_20250426_122340.jpg", "IMG-20250429_112750.jpg", "IMG_20250503_122400.jpg", "IMG-20250503_122548.jpg", "IMG-20250503_122612.jpg", "IMG-20250505_122326.jpg"
+    ]
+  };
+
+  var galleryState = {
+    isLightboxOpen: false,
+    reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  };
+
+  if (dynamicContainer) {
+    Object.keys(eventsData).forEach(function (eventName) {
+      var images = eventsData[eventName];
+      if (images.length === 0) return;
+      
+      var sectionDiv = document.createElement('div');
+      sectionDiv.className = 'event-gallery-section fade-up';
+      
+      var headerDiv = document.createElement('div');
+      headerDiv.className = 'event-gallery-header';
+      headerDiv.innerHTML = '<h3 class="event-gallery-title">' + eventName + '</h3>';
+      
+      var trackContainer = document.createElement('div');
+      trackContainer.className = 'event-gallery-track-container';
+      
+      var trackDiv = document.createElement('div');
+      trackDiv.className = 'event-gallery-track';
+      
+      // Duplicate images for infinite illusion
+      var renderImages = images.concat(images);
+      
+      renderImages.forEach(function (imgFile, index) {
+        var imgSrc = 'images/' + eventName + '/' + imgFile;
+        var originalIndex = index % images.length;
+        
+        var itemDiv = document.createElement('div');
+        itemDiv.className = 'gallery-item';
+        itemDiv.tabIndex = 0;
+        itemDiv.setAttribute('role', 'button');
+        itemDiv.setAttribute('aria-label', 'Open ' + eventName + ' image');
+        
+        var imgEl = document.createElement('img');
+        imgEl.src = imgSrc;
+        imgEl.alt = eventName + ' celebration at Bethel School';
+        imgEl.loading = 'lazy';
+        
+        var overlayDiv = document.createElement('div');
+        overlayDiv.className = 'gallery-overlay';
+        overlayDiv.innerHTML = '<span class="gallery-category">Event</span><div class="gallery-title">' + eventName + '</div>';
+        
+        itemDiv.appendChild(imgEl);
+        itemDiv.appendChild(overlayDiv);
+        
+        itemDiv.addEventListener('click', function () {
+          openLightbox(originalIndex, images, eventName);
+        });
+        itemDiv.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') openLightbox(originalIndex, images, eventName);
+        });
+        
+        trackDiv.appendChild(itemDiv);
+      });
+      
+      trackContainer.appendChild(trackDiv);
+      sectionDiv.appendChild(headerDiv);
+      sectionDiv.appendChild(trackContainer);
+      dynamicContainer.appendChild(sectionDiv);
+      
+      // Auto-scroll Logic
+      var isHovered = false;
+      var isDragging = false;
+      var startX, scrollLeft;
+      var scrollSpeed = 0.5;
+
+      trackContainer.addEventListener('mouseenter', function () { isHovered = true; });
+      trackContainer.addEventListener('mouseleave', function () { 
+        isHovered = false; 
+        isDragging = false;
+      });
+      
+      trackContainer.addEventListener('touchstart', function () { isHovered = true; }, {passive: true});
+      trackContainer.addEventListener('touchend', function () { isHovered = false; });
+      
+      trackContainer.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        startX = e.pageX - trackContainer.offsetLeft;
+        scrollLeft = trackContainer.scrollLeft;
+      });
+      trackContainer.addEventListener('mouseup', function () { isDragging = false; });
+      trackContainer.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        var x = e.pageX - trackContainer.offsetLeft;
+        var walk = (x - startX) * 2; 
+        trackContainer.scrollLeft = scrollLeft - walk;
+      });
+      
+      function step() {
+        if (!galleryState.reducedMotion && !galleryState.isLightboxOpen && !isHovered && !isDragging) {
+          trackContainer.scrollLeft += scrollSpeed;
+          // Reset when reaching halfway
+          if (trackContainer.scrollLeft >= trackContainer.scrollWidth / 2) {
+            trackContainer.scrollLeft = 0;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  function openLightbox(index, imagesArray, eventName) {
+    if (!lightboxModal) return;
+    galleryState.isLightboxOpen = true;
+    
+    currentLightboxEventData = imagesArray.map(function(img) {
+      return {
+        src: 'images/' + eventName + '/' + img,
+        alt: eventName + ' celebration at Bethel School',
+        title: eventName,
+        category: 'Event'
+      };
+    });
+    
+    currentLightboxIndex = index;
+    updateLightboxContent();
+    lightboxModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function updateLightboxContent() {
+    var data = currentLightboxEventData[currentLightboxIndex];
+    if (lightboxImg) {
+      lightboxImg.src = data.src;
+      lightboxImg.alt = data.alt;
+    }
+    if (lightboxCaption) {
+      lightboxCaption.textContent = data.title + (data.category ? ' — ' + data.category : '');
+    }
+  }
+
+  function closeLightbox() {
+    if (!lightboxModal) return;
+    galleryState.isLightboxOpen = false;
+    lightboxModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showNextImage() {
+    if (!currentLightboxEventData.length) return;
+    currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxEventData.length;
+    updateLightboxContent();
+  }
+
+  function showPrevImage() {
+    if (!currentLightboxEventData.length) return;
+    currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxEventData.length) % currentLightboxEventData.length;
+    updateLightboxContent();
+  }
+
+  lightboxClose && lightboxClose.addEventListener('click', closeLightbox);
+  lightboxNext && lightboxNext.addEventListener('click', function (e) {
+    e.stopPropagation();
+    showNextImage();
+  });
+  lightboxPrev && lightboxPrev.addEventListener('click', function (e) {
+    e.stopPropagation();
+    showPrevImage();
+  });
+
+  lightboxModal && lightboxModal.addEventListener('click', function (e) {
+    if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {
+      closeLightbox();
+    }
+  });
+
+  window.addEventListener('keydown', function (e) {
+    if (!galleryState.isLightboxOpen) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNextImage();
+    if (e.key === 'ArrowLeft') showPrevImage();
+  });
+
+  // 7. ENQUIRY FORM CLIENT-SIDE VALIDATION & FEEDBACK
+  var enquiryForm = document.getElementById('bouneyEnquiryForm');
+  var formSubmitBtn = document.getElementById('formSubmitBtn');
+  var formStatusMsg = document.getElementById('formStatusMsg');
+
+  if (enquiryForm) {
+    enquiryForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var parentName = (document.getElementById('parentName') || {}).value || '';
+      var childName = (document.getElementById('childName') || {}).value || '';
+      var childAge = (document.getElementById('childAge') || {}).value || '';
+      var phoneNum = (document.getElementById('phoneNum') || {}).value || '';
+      var emailAddr = (document.getElementById('emailAddr') || {}).value || '';
+      var interestedProgram = (document.getElementById('enquiryProgram') || {}).value || '';
+      var preferredMethod = (document.getElementById('preferredMethod') || {}).value || 'Phone';
+      var messageText = (document.getElementById('parentMessage') || {}).value || '';
+
+      // Validation
+      if (!parentName.trim() || !phoneNum.trim()) {
+        if (formStatusMsg) {
+          formStatusMsg.className = 'form-status-msg error';
+          formStatusMsg.textContent = 'Please fill in both your Parent Name and Contact Phone Number.';
+        }
+        return;
+      }
+
+      // UI Loading state
+      if (formSubmitBtn) {
+        formSubmitBtn.disabled = true;
+        var btnText = formSubmitBtn.querySelector('span');
+        if (btnText) btnText.textContent = 'Submitting Enquiry...';
+      }
+
+      // Simulated clean network transmission
+      setTimeout(function () {
+        if (formSubmitBtn) {
+          formSubmitBtn.disabled = false;
+          var btnText = formSubmitBtn.querySelector('span');
+          if (btnText) btnText.textContent = 'Send Enquiry';
+        }
+
+        if (formStatusMsg) {
+          formStatusMsg.className = 'form-status-msg success';
+          formStatusMsg.innerHTML = 
+            '<strong>✓ Thank you, ' + escapeHtml(parentName) + '!</strong> Your enquiry for ' + 
+            (childName ? escapeHtml(childName) + ' ' : '') + 'has been received. ' +
+            'Our team at BOUNEY BEARS will reach out to you via ' + escapeHtml(preferredMethod) + ' shortly.<br>' +
+            '<a href="' + config.getWhatsAppUrl('Hi BOUNEY BEARS, I just submitted an enquiry for ' + (interestedProgram || 'your programs') + ' for child ' + (childName || 'my child') + '.') + '" target="_blank" rel="noopener noreferrer" style="color:#065F46; font-weight:700; text-decoration:underline; display:inline-block; margin-top:6px;">Or click here to connect immediately on WhatsApp &rarr;</a>';
+        }
+
+        enquiryForm.reset();
+      }, 1200);
+    });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // 8. SCROLL FADE-UP ANIMATIONS (IntersectionObserver)
+  var fadeElements = document.querySelectorAll('.fade-up');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    fadeElements.forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    fadeElements.forEach(function (el) {
+      el.classList.add('in-view');
+    });
+  }
+
+  // 9. DAY / NIGHT THEME SWITCHER (Blossom Bud Purple Dark Theme)
+  var themeToggleBtns = document.querySelectorAll('#themeToggle, #drawerThemeToggle');
+
+  function getStoredTheme() {
+    try {
+      return localStorage.getItem('theme') || 'light';
+    } catch (e) {
+      return 'light';
+    }
+  }
+
+  function setTheme(theme, triggerTransition) {
+    if (triggerTransition) {
+      document.documentElement.classList.add('theme-transitioning');
+    }
+
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+      var metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.setAttribute('content', '#0D0A1A');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+      var metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.setAttribute('content', '#B45309');
+    }
+
+    themeToggleBtns.forEach(function (btn) {
+      var isDark = theme === 'dark';
+      btn.setAttribute('aria-label', isDark ? 'Switch to Day theme' : 'Switch to Night theme');
+      btn.setAttribute('title', isDark ? 'Switch to Day theme' : 'Switch to Night theme');
+    });
+
+    if (triggerTransition) {
+      setTimeout(function () {
+        document.documentElement.classList.remove('theme-transitioning');
+      }, 350);
+    }
+  }
+
+  themeToggleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next, true);
+    });
+  });
+
+  // Sync initial state
+  setTheme(getStoredTheme(), false);
+
+});
