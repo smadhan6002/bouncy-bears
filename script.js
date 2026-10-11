@@ -152,6 +152,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
   bindDynamicConfig();
 
+  // 1.1 SOCIAL FLOATING ACTIONS & INSTAGRAM DM ENQUIRY
+  function initSocialFloatingActions() {
+    var instaBtn = document.getElementById('instagramDmBtn');
+    var toast = document.getElementById('socialToast');
+    var toastClose = document.getElementById('socialToastClose');
+    var toastTimer = null;
+
+    function showToast() {
+      if (!toast) return;
+      if (toastTimer) clearTimeout(toastTimer);
+      toast.classList.add('show');
+      toastTimer = setTimeout(function() {
+        toast.classList.remove('show');
+      }, 5000);
+    }
+
+    if (toastClose) {
+      toastClose.addEventListener('click', function() {
+        if (toastTimer) clearTimeout(toastTimer);
+        if (toast) toast.classList.remove('show');
+      });
+    }
+
+    window.handleInstagramDmClick = function(e) {
+      var socialConfig = (config && config.social) || {};
+      var msg = socialConfig.enquiryMessage || "Hi Bouncy Bears! 👋 I visited your website and would like to enquire about your services. Could you please share the details and pricing?";
+      
+      // Copy enquiry message to clipboard
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(msg).catch(function() {
+          // Silently fallback if permission denied
+        });
+      } else {
+        try {
+          var temp = document.createElement('textarea');
+          temp.value = msg;
+          temp.setAttribute('readonly', '');
+          temp.style.position = 'fixed';
+          temp.style.left = '-9999px';
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+        } catch (err) {}
+      }
+
+      // Show friendly guidance toast
+      showToast();
+    };
+
+    if (instaBtn) {
+      instaBtn.addEventListener('click', window.handleInstagramDmClick);
+    }
+  }
+
+  initSocialFloatingActions();
+
   // 2. STICKY NAVBAR SCROLL ELEVATION
   var siteHeader = document.getElementById('siteHeader');
   function handleNavbarScroll() {

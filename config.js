@@ -31,6 +31,15 @@ const Bouncy_CONFIG = {
     googleMapsUrl: "https://maps.app.goo.gl/qwFYS7hceevQxYQK6?g_st=ac"
   },
 
+  // Social Media & Messaging Configuration
+  social: {
+    instagramUsername: "bouncybearsindia",
+    instagramDmUrl: "https://ig.me/m/bouncybearsindia",
+    instagramProfileUrl: "https://www.instagram.com/bouncybearsindia?mdxt=cXRoM3F5cXRuenV0",
+    facebookUrl: "https://www.facebook.com/share/1CfkcCQCy3/",
+    enquiryMessage: "Hi Bouncy Bears! 👋 I visited your website and would like to enquire about your services. Could you please share the details and pricing?"
+  },
+
   // Business Hours (Strictly verified from client form)
   businessHours: [
     { day: "Monday", time: "9:00 AM – 9:00 PM", status: "open" },

@@ -1527,13 +1527,37 @@
   <!-- ==========================================================================
        16. FLOATING QUICK-ACTION SOCIAL & WHATSAPP BUTTONS
        ========================================================================== -->
-  <div class="floating-social-stack">
-    <a href="https://instagram.com" 
-       class="floating-social-btn instagram" 
+  <div class="social-toast" id="socialToast" role="status" aria-live="polite">
+    <div class="social-toast-content">
+      <div class="social-toast-icon">📋</div>
+      <div class="social-toast-text">
+        <strong>Enquiry message copied!</strong>
+        <span>Paste it directly into your Instagram message chat.</span>
+      </div>
+      <button type="button" class="social-toast-close" id="socialToastClose" aria-label="Close notification" onclick="var t=document.getElementById('socialToast'); if(t) t.classList.remove('show');">&times;</button>
+    </div>
+  </div>
+
+  <div class="floating-social-stack" role="region" aria-label="Quick social contact actions">
+    <a href="https://www.facebook.com/share/1CfkcCQCy3/" 
+       class="floating-social-btn facebook" 
        target="_blank" 
        rel="noopener noreferrer" 
-       aria-label="Follow us on Instagram">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+       aria-label="Visit Bouncy Bears on Facebook"
+       data-tooltip="Facebook">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="https://ig.me/m/bouncybearsindia" 
+       class="floating-social-btn instagram" 
+       id="instagramDmBtn"
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="Message Bouncy Bears on Instagram"
+       data-tooltip="Instagram DM"
+       onclick="window.handleInstagramDmClick && window.handleInstagramDmClick(event)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -1544,17 +1568,18 @@
        target="_blank" 
        rel="noopener noreferrer" 
        aria-label="Chat on WhatsApp" 
+       data-tooltip="WhatsApp"
        data-whatsapp-action 
        data-whatsapp-msg="Hi Bouncy Bears, I would like to enquire about your programs.">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.579 1.769.882 2.781.883h.001c3.181 0 5.767-2.587 5.768-5.766.001-3.18-2.585-5.767-5.769-5.767zm7.408 5.766c-.001 4.088-3.327 7.414-7.414 7.414-.001 0-.001 0 0 0-1.285 0-2.476-.324-3.535-.913l-4.49 1.177 1.198-4.381c-.696-1.135-1.063-2.433-1.063-3.797 0-4.088 3.326-7.414 7.414-7.414 4.088 0 7.414 3.326 7.414 7.414z"/>
       </svg>
     </a>
   </div>
 
   <!-- Central Configuration & Logic Scripts -->
-  <script src="config.js"></script>
-  <script src="script.js?v=2"></script>
+  <script src="config.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 
   <script>
     // Ensure current year is updated
