@@ -1,5 +1,5 @@
 /**
- * BOUNEY BEARS — CENTRAL CONFIGURATION DATA
+ * Bouncy Bears — CENTRAL CONFIGURATION DATA
  * Single source of truth for all school information, contact details,
  * business hours, programs, facilities, and gallery items.
  * 
@@ -9,11 +9,11 @@
  *   and can be updated here without touching HTML/CSS.
  */
 
-const BOUNEY_CONFIG = {
-  schoolName: "BOUNEY BEARS",
+const Bouncy_CONFIG = {
+  schoolName: "Bouncy Bears",
   tagline: "Where Little Minds Learn, Play & Grow",
-  subTagline: "A warm and nurturing space for children to learn, explore, build confidence and grow with care.",
-  type: "Preschool · Day Care · Tuition & Children's Activity Centre",
+  subTagline: "Premium educational heaven combining early childhood discipline and heartfelt care.",
+  type: "Daycare, Tuition & Activity Centre",
   minAge: "2+ Years",
 
   // Contact Information (Strictly verified)
@@ -22,11 +22,13 @@ const BOUNEY_CONFIG = {
     primaryPhoneRaw: "+919940462534",
     secondaryPhone: "044 31451925",
     secondaryPhoneRaw: "+914431451925",
-    email: "boneybearschildcare@gmail.com",
+    email: "bouncybearschildcare@gmail.com",
     whatsappNumber: "919940462534",
     whatsappDisplay: "+91 99404 62534",
-    addressNotice: "Contact us for location details",
-    addressStatus: "Location details available upon enquiry"
+    address: "8, 2nd St, Valluvar Nagar, Gopalapuram, Chennai, Tamil Nadu 600086",
+    addressNotice: "8, 2nd St, Valluvar Nagar, Gopalapuram, Chennai, Tamil Nadu 600086",
+    addressStatus: "8, 2nd St, Valluvar Nagar, Gopalapuram, Chennai, Tamil Nadu 600086",
+    googleMapsUrl: "https://maps.app.goo.gl/qwFYS7hceevQxYQK6?g_st=ac"
   },
 
   // Business Hours (Strictly verified from client form)
@@ -50,7 +52,7 @@ const BOUNEY_CONFIG = {
         "Social interaction & emotional growth",
         "Caring, individualized attention"
       ],
-      whatsappMsg: "Hi BOUNEY BEARS, I would like to know more about the Play School program."
+      whatsappMsg: "Hi Bouncy Bears, I would like to know more about the Play School program."
     },
     {
       id: "day-care",
@@ -64,7 +66,7 @@ const BOUNEY_CONFIG = {
         "Structured play & restful naptime",
         "Loving, attentive caregivers"
       ],
-      whatsappMsg: "Hi BOUNEY BEARS, I would like to know more about your Day Care services."
+      whatsappMsg: "Hi Bouncy Bears, I would like to know more about your Day Care services."
     },
     {
       id: "tuition-all",
@@ -78,7 +80,7 @@ const BOUNEY_CONFIG = {
         "Confidence in school curriculum",
         "Patient, structured guidance"
       ],
-      whatsappMsg: "Hi BOUNEY BEARS, I would like to know more about Tuition for all subjects."
+      whatsappMsg: "Hi Bouncy Bears, I would like to know more about Tuition for all subjects."
     },
     {
       id: "classical-dance",
@@ -92,7 +94,7 @@ const BOUNEY_CONFIG = {
         "Stage confidence & discipline",
         "Gentle, age-appropriate coaching"
       ],
-      whatsappMsg: "Hi BOUNEY BEARS, I would like to know more about Classical Dance classes."
+      whatsappMsg: "Hi Bouncy Bears, I would like to know more about Classical Dance classes."
     },
     {
       id: "chess",
@@ -106,7 +108,7 @@ const BOUNEY_CONFIG = {
         "Patience, sportsmanship & focus",
         "Progressive challenges"
       ],
-      whatsappMsg: "Hi BOUNEY BEARS, I would like to know more about Chess coaching."
+      whatsappMsg: "Hi Bouncy Bears, I would like to know more about Chess coaching."
     },
     {
       id: "phonics",
@@ -120,7 +122,7 @@ const BOUNEY_CONFIG = {
         "Early vocabulary & reading fluency",
         "Interactive sound games"
       ],
-      whatsappMsg: "Hi BOUNEY BEARS, I would like to know more about the Phonics program."
+      whatsappMsg: "Hi Bouncy Bears, I would like to know more about the Phonics program."
     },
     {
       id: "higher-tuition",
@@ -134,7 +136,7 @@ const BOUNEY_CONFIG = {
         "Systematic revision sessions",
         "Individual doubt clearance"
       ],
-      whatsappMsg: "Hi BOUNEY BEARS, I would like to know more about 11th & 12th Class Tuition."
+      whatsappMsg: "Hi Bouncy Bears, I would like to know more about 11th & 12th Class Tuition."
     }
   ],
 
@@ -212,7 +214,7 @@ const BOUNEY_CONFIG = {
       title: "Joyful Early Exploration",
       category: "Play School",
       src: "assets/gallery-class-1.jpg",
-      alt: "Children engaged in joyful early childhood learning at BOUNEY BEARS"
+      alt: "Children engaged in joyful early childhood learning at Bouncy Bears"
     },
     {
       title: "Interactive Classroom Learning",
@@ -248,11 +250,11 @@ const BOUNEY_CONFIG = {
 
   // Helper method to create WhatsApp direct links
   getWhatsAppUrl: function (customText) {
-    var text = customText || "Hi BOUNEY BEARS, I would like to enquire about your programs.";
+    var text = customText || "Hi Bouncy Bears, I would like to enquire about your programs.";
     return "https://wa.me/" + this.contact.whatsappNumber + "?text=" + encodeURIComponent(text);
   }
 };
 
 if (typeof window !== "undefined") {
-  window.BOUNEY_CONFIG = BOUNEY_CONFIG;
+  window.Bouncy_CONFIG = Bouncy_CONFIG;
 }

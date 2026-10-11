@@ -1,12 +1,72 @@
 /**
- * BOUNEY BEARS — CLIENT INTERACTION ENGINE
- * Powered by centralized BOUNEY_CONFIG
+ * Bouncy Bears — CLIENT INTERACTION ENGINE
+ * Powered by centralized Bouncy_CONFIG
  */
+
+// ==========================================================================
+// 0. VIDEO PRELOADER LOGIC
+// ==========================================================================
+(function() {
+  var preloader = document.getElementById('video-preloader');
+  var video = document.getElementById('preloader-video');
+  
+  if (!preloader || !video) return;
+
+  // Check session storage
+  var hasSeenPreloader = sessionStorage.getItem('bouncyBearsPreloaderSeen');
+  
+  if (hasSeenPreloader === 'true') {
+    // Already saw it this session, hide immediately without transition
+    preloader.style.display = 'none';
+    return;
+  }
+
+  // Prevent scrolling
+  document.body.classList.add('preloader-active');
+
+  function removePreloader() {
+    if (preloader.classList.contains('fade-out')) return;
+    
+    preloader.classList.add('fade-out');
+    document.body.classList.remove('preloader-active');
+    sessionStorage.setItem('bouncyBearsPreloaderSeen', 'true');
+    
+    // Completely remove from DOM after fade out to free memory
+    setTimeout(function() {
+      if (preloader.parentNode) {
+        preloader.parentNode.removeChild(preloader);
+      }
+    }, 800);
+  }
+
+  // Event Listeners
+  video.addEventListener('ended', removePreloader);
+  video.addEventListener('error', removePreloader); // Fallback if video fails to load
+
+  // Attempt Autoplay
+  var playPromise = video.play();
+  
+  if (playPromise !== undefined) {
+    playPromise.catch(function(error) {
+      // Autoplay blocked or failed
+      console.warn("Autoplay prevented or failed, hiding preloader fallback:", error);
+      removePreloader();
+    });
+  }
+
+  // Fallback: If video gets stuck buffering for more than 10 seconds
+  setTimeout(function() {
+    if (!preloader.classList.contains('fade-out')) {
+      console.warn("Preloader timeout fallback triggered");
+      removePreloader();
+    }
+  }, 10000);
+})();
 
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
-  var config = window.BOUNEY_CONFIG || {};
+  var config = window.Bouncy_CONFIG || {};
 
   // 1. DYNAMIC CONTACT & WHATSAPP DATA BINDING
   function bindDynamicConfig() {
@@ -69,7 +129,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function openDrawer() {
     if (!mobileDrawer) return;
     mobileToggle && mobileToggle.classList.add('active');
+    mobileToggle && mobileToggle.setAttribute('aria-expanded', 'true');
     mobileDrawer.classList.add('active');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
     drawerOverlay && drawerOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -77,7 +139,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function closeDrawer() {
     if (!mobileDrawer) return;
     mobileToggle && mobileToggle.classList.remove('active');
+    mobileToggle && mobileToggle.setAttribute('aria-expanded', 'false');
     mobileDrawer.classList.remove('active');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
     drawerOverlay && drawerOverlay.classList.remove('active');
     document.body.style.overflow = '';
   }
@@ -92,6 +156,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   drawerClose && drawerClose.addEventListener('click', closeDrawer);
   drawerOverlay && drawerOverlay.addEventListener('click', closeDrawer);
+
+  // Close drawer on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('active')) {
+      closeDrawer();
+      mobileToggle && mobileToggle.focus();
+    }
+  });
 
   drawerLinks.forEach(function (link) {
     link.addEventListener('click', function () {
@@ -167,8 +239,31 @@ document.addEventListener('DOMContentLoaded', function () {
     "Christmas": [
       "IMG-20251223-WA0011.jpg", "IMG-20251223-WA0020.jpg", "IMG-20251223-WA0022.jpg", "IMG-20251223-WA0024.jpg", "IMG-20251223-WA0025.jpg", "IMG-20251223-WA0027.jpg", "IMG-20251223-WA0035.jpg", "IMG-20251223-WA0052.jpg", "IMG-20251223-WA0061.jpg", "IMG-20251223-WA0068.jpg", "IMG-20251223-WA0079.jpg", "IMG-20251223-WA0086.jpg", "IMG-20251223-WA0088.jpg", "IMG-20251223-WA0089.jpg", "IMG-20251223-WA0092.jpg", "IMG-20251223-WA0103.jpg"
     ],
-    "Summer camp": [
-      "IMG-20250312-WA0006.jpg", "IMG-20250312-WA0007.jpg", "IMG-20250312-WA0042.jpg", "IMG-20250312-WA0046.jpg", "IMG-20250312-WA0047.jpg", "IMG-20250312-WA0048.jpg", "IMG-20250312-WA0050.jpg", "IMG-20250312-WA0051.jpg", "IMG-20250312-WA0052.jpg", "IMG-20250312-WA0054.jpg", "IMG-20250312-WA0056.jpg", "IMG-20250312-WA0058.jpg", "IMG-20250312-WA0064.jpg", "IMG-20250312-WA0073.jpg", "IMG-20250312-WA0079.jpg", "IMG-20250312-WA0093.jpg", "IMG-20250312-WA0094.jpg", "IMG-20250312-WA0100.jpg", "IMG-20250312-WA0104.jpg", "IMG-20250312-WA0106.jpg", "IMG_20250421_121756.jpg", "IMG_20250423_122755.jpg", "IMG_20250426_120809.jpg", "IMG_20250426_122340.jpg", "IMG-20250429_112750.jpg", "IMG_20250503_122400.jpg", "IMG-20250503_122548.jpg", "IMG-20250503_122612.jpg", "IMG-20250505_122326.jpg"
+    "Project Based Learning": [
+      "WhatsApp Image 2026-10-08 at 5.26.22 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.23 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.23 PM (2).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.23 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.24 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.24 PM (2).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.24 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.25 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.25 PM (2).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.25 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.26 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.26 PM (2).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.26 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.27 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.27 PM (2).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.27 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.28 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.28 PM (2).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.28 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.29 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.29 PM (2).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.29 PM.jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.30 PM (1).jpeg",
+      "WhatsApp Image 2026-10-08 at 5.26.30 PM.jpeg"
     ]
   };
 
@@ -351,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // 7. ENQUIRY FORM CLIENT-SIDE VALIDATION & FEEDBACK
-  var enquiryForm = document.getElementById('bouneyEnquiryForm');
+  var enquiryForm = document.getElementById('bouncyEnquiryForm');
   var formSubmitBtn = document.getElementById('formSubmitBtn');
   var formStatusMsg = document.getElementById('formStatusMsg');
 
@@ -397,8 +492,8 @@ document.addEventListener('DOMContentLoaded', function () {
           formStatusMsg.innerHTML = 
             '<strong>✓ Thank you, ' + escapeHtml(parentName) + '!</strong> Your enquiry for ' + 
             (childName ? escapeHtml(childName) + ' ' : '') + 'has been received. ' +
-            'Our team at BOUNEY BEARS will reach out to you via ' + escapeHtml(preferredMethod) + ' shortly.<br>' +
-            '<a href="' + config.getWhatsAppUrl('Hi BOUNEY BEARS, I just submitted an enquiry for ' + (interestedProgram || 'your programs') + ' for child ' + (childName || 'my child') + '.') + '" target="_blank" rel="noopener noreferrer" style="color:#065F46; font-weight:700; text-decoration:underline; display:inline-block; margin-top:6px;">Or click here to connect immediately on WhatsApp &rarr;</a>';
+            'Our team at Bouncy Bears will reach out to you via ' + escapeHtml(preferredMethod) + ' shortly.<br>' +
+            '<a href="' + config.getWhatsAppUrl('Hi Bouncy Bears, I just submitted an enquiry for ' + (interestedProgram || 'your programs') + ' for child ' + (childName || 'my child') + '.') + '" target="_blank" rel="noopener noreferrer" style="color:#065F46; font-weight:700; text-decoration:underline; display:inline-block; margin-top:6px;">Or click here to connect immediately on WhatsApp &rarr;</a>';
         }
 
         enquiryForm.reset();
@@ -486,5 +581,317 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Sync initial state
   setTheme(getStoredTheme(), false);
+
+  // 14. HORIZONTAL CAROUSEL LOGIC
+  document.querySelectorAll('.carousel-wrapper').forEach(function(wrapper) {
+    var track = wrapper.querySelector('.carousel-track-container');
+    var trackInner = track.querySelector('.carousel-track');
+    var prevBtn = wrapper.querySelector('.carousel-btn.prev');
+    var nextBtn = wrapper.querySelector('.carousel-btn.next');
+    var paginationContainer = wrapper.parentElement.querySelector('.carousel-pagination');
+    var items = trackInner.querySelectorAll('.carousel-item');
+    
+    if (!track || items.length === 0) return;
+
+    var isInfiniteMarquee = wrapper.classList.contains('highlights-carousel') || wrapper.classList.contains('learning-carousel');
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      isInfiniteMarquee = false; // Disable continuous scroll for accessibility
+    }
+
+    if (isInfiniteMarquee) {
+      // ----------------------------------------------------
+      // TRUE SEAMLESS INFINITE MARQUEE (Highlights Carousel)
+      // ----------------------------------------------------
+      if (paginationContainer) {
+        paginationContainer.style.display = 'none'; // Hide pagination
+      }
+
+      var originalItems = Array.from(items);
+      
+      // Hide native scrollbar and disable native scrolling for flawless marquee
+      track.style.overflow = 'hidden';
+      
+      // Wrap original items in a group
+      var group1 = document.createElement('div');
+      group1.className = 'marquee-group';
+      group1.style.display = 'flex';
+      group1.style.gap = window.getComputedStyle(trackInner).gap || '1.5rem';
+      group1.style.flexShrink = '0';
+      group1.style.alignItems = 'stretch';
+      
+      originalItems.forEach(function(item) {
+        group1.appendChild(item);
+      });
+      trackInner.appendChild(group1);
+      
+      // Clone the group twice
+      var group2 = group1.cloneNode(true);
+      group2.setAttribute('aria-hidden', 'true');
+      trackInner.appendChild(group2);
+
+      var group3 = group1.cloneNode(true);
+      group3.setAttribute('aria-hidden', 'true');
+      trackInner.appendChild(group3);
+
+      var isPaused = false;
+      var isTransitioning = false;
+      var speedPerMs = 0.05; // Constant speed (~50px per second, ~30s per loop)
+      var currentX = 0;
+      var animationFrameId;
+      var interactionTimeout;
+      var lastTime = performance.now();
+      
+      // Touch/Drag logic
+      var isDragging = false;
+      var startX = 0;
+      var lastDragX = 0;
+
+      function getSetWidth() {
+        var setWidth = group1.getBoundingClientRect().width;
+        var gap = parseFloat(window.getComputedStyle(trackInner).gap) || 0;
+        return setWidth + gap;
+      }
+
+      function loop(currentTime) {
+        var dt = currentTime - lastTime;
+        lastTime = currentTime;
+        if (dt > 100) dt = 16; // Prevent jump after inactive tab
+
+        var totalSetWidth = getSetWidth();
+        if (totalSetWidth > 0 && !isPaused && !isDragging && !isTransitioning) {
+          currentX -= speedPerMs * dt;
+          
+          if (Math.abs(currentX) >= totalSetWidth) {
+            currentX += totalSetWidth;
+          } else if (currentX > 0) {
+            currentX -= totalSetWidth;
+          }
+          
+          trackInner.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+        }
+        animationFrameId = window.requestAnimationFrame(loop);
+      }
+
+      animationFrameId = window.requestAnimationFrame(loop);
+
+      function pauseScroll() {
+        isPaused = true;
+        clearTimeout(interactionTimeout);
+      }
+
+      function resumeScroll() {
+        clearTimeout(interactionTimeout);
+        interactionTimeout = setTimeout(function() {
+          isPaused = false;
+        }, 2000);
+      }
+
+      // Hover
+      wrapper.addEventListener('mouseenter', pauseScroll);
+      wrapper.addEventListener('mouseleave', resumeScroll);
+
+      // Touch / Swipe
+      track.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        pauseScroll();
+        startX = e.touches[0].clientX;
+        lastDragX = currentX;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        var dx = e.touches[0].clientX - startX;
+        currentX = lastDragX + dx;
+        
+        var totalSetWidth = getSetWidth();
+        if (currentX > 0) {
+           currentX -= totalSetWidth;
+           lastDragX -= totalSetWidth;
+        } else if (Math.abs(currentX) >= totalSetWidth) {
+           currentX += totalSetWidth;
+           lastDragX += totalSetWidth;
+        }
+        
+        trackInner.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+      }, { passive: true });
+
+      track.addEventListener('touchend', function() {
+        isDragging = false;
+        resumeScroll();
+      }, { passive: true });
+
+      // Mouse Drag
+      track.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        pauseScroll();
+        startX = e.clientX;
+        lastDragX = currentX;
+        track.style.cursor = 'grabbing';
+      });
+      
+      window.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        var dx = e.clientX - startX;
+        currentX = lastDragX + dx;
+        
+        var totalSetWidth = getSetWidth();
+        if (currentX > 0) {
+           currentX -= totalSetWidth;
+           lastDragX -= totalSetWidth;
+        } else if (Math.abs(currentX) >= totalSetWidth) {
+           currentX += totalSetWidth;
+           lastDragX += totalSetWidth;
+        }
+        
+        trackInner.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+      });
+      
+      window.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          track.style.cursor = '';
+          resumeScroll();
+        }
+      });
+
+      // Buttons manually scroll
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          pauseScroll();
+          isTransitioning = true;
+          var itemWidth = originalItems[0].getBoundingClientRect().width + (parseFloat(window.getComputedStyle(group1).gap) || 0);
+          currentX += itemWidth;
+          
+          var totalSetWidth = getSetWidth();
+          if (currentX > 0) currentX -= totalSetWidth;
+          
+          trackInner.style.transition = 'transform 0.3s ease-out';
+          trackInner.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+          
+          setTimeout(function() {
+            trackInner.style.transition = 'none';
+            isTransitioning = false;
+            resumeScroll();
+          }, 300);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          pauseScroll();
+          isTransitioning = true;
+          var itemWidth = originalItems[0].getBoundingClientRect().width + (parseFloat(window.getComputedStyle(group1).gap) || 0);
+          currentX -= itemWidth;
+          
+          var totalSetWidth = getSetWidth();
+          if (Math.abs(currentX) >= totalSetWidth) currentX += totalSetWidth;
+          
+          trackInner.style.transition = 'transform 0.3s ease-out';
+          trackInner.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+          
+          setTimeout(function() {
+            trackInner.style.transition = 'none';
+            isTransitioning = false;
+            resumeScroll();
+          }, 300);
+        });
+      }
+
+    } else {
+      // ----------------------------------------------------
+      // NORMAL DISCRETE CAROUSEL (Learning/Bento Carousel)
+      // ----------------------------------------------------
+      var dots = [];
+      if (paginationContainer) {
+        items.forEach(function(_, i) {
+          var dot = document.createElement('button');
+          dot.className = 'carousel-dot';
+          if (i === 0) dot.classList.add('active');
+          dot.setAttribute('aria-label', 'Go to item ' + (i + 1));
+          dot.addEventListener('click', function() {
+            var scrollPos = items[i].offsetLeft - track.offsetLeft;
+            track.scrollTo({ left: scrollPos, behavior: 'smooth' });
+          });
+          paginationContainer.appendChild(dot);
+          dots.push(dot);
+        });
+      }
+
+      function updateCarouselState() {
+        var maxScrollLeft = track.scrollWidth - track.clientWidth;
+        if (prevBtn) prevBtn.disabled = track.scrollLeft <= 0;
+        if (nextBtn) nextBtn.disabled = Math.ceil(track.scrollLeft) >= maxScrollLeft - 1;
+
+        var centerPos = track.scrollLeft + (track.clientWidth / 2);
+        var activeIndex = 0;
+        var minDiff = Infinity;
+        
+        items.forEach(function(item, index) {
+          var itemCenter = (item.offsetLeft - track.offsetLeft) + (item.offsetWidth / 2);
+          var diff = Math.abs(itemCenter - centerPos);
+          if (diff < minDiff) {
+            minDiff = diff;
+            activeIndex = index;
+          }
+        });
+        
+        dots.forEach(function(dot, index) {
+          if (index === activeIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          var itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(items[0].parentElement).gap || '0');
+          track.scrollBy({ left: -itemWidth * 2, behavior: 'smooth' });
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          var itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(items[0].parentElement).gap || '0');
+          track.scrollBy({ left: itemWidth * 2, behavior: 'smooth' });
+        });
+      }
+
+      track.addEventListener('scroll', function() {
+        window.requestAnimationFrame(updateCarouselState);
+      });
+
+      // Auto-Scroll (Discrete loop for secondary carousels)
+      var autoScrollTimer;
+      function startDiscreteAutoScroll() {
+        autoScrollTimer = setInterval(function() {
+          if (!track || items.length === 0) return;
+          var maxScrollLeft = track.scrollWidth - track.clientWidth;
+          var itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(items[0].parentElement).gap || '0');
+          
+          if (Math.ceil(track.scrollLeft) >= maxScrollLeft - 1) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+          }
+        }, 3000);
+      }
+
+      function stopDiscreteAutoScroll() {
+        clearInterval(autoScrollTimer);
+      }
+
+      startDiscreteAutoScroll();
+      wrapper.addEventListener('mouseenter', stopDiscreteAutoScroll);
+      wrapper.addEventListener('mouseleave', startDiscreteAutoScroll);
+      wrapper.addEventListener('touchstart', stopDiscreteAutoScroll, { passive: true });
+      wrapper.addEventListener('touchend', startDiscreteAutoScroll, { passive: true });
+
+      window.addEventListener('resize', updateCarouselState);
+      setTimeout(updateCarouselState, 100);
+    }
+  });
 
 });

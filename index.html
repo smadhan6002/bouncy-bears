@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOUNEY BEARS | Preschool & Day Care</title>
+  <title>Bouncy Bears | Daycare, Tuition &amp; Activity Centre</title>
   <meta name="description"
-    content="BOUNEY BEARS offers a safe, caring and engaging preschool and day care environment where children learn, explore and grow with confidence.">
+    content="Premium educational heaven combining early childhood discipline and heartfelt care. Bouncy Bears offers Daycare, Tuition &amp; Activity Centre in Gopalapuram, Chennai.">
   <meta name="keywords"
-    content="BOUNEY BEARS, Play School, Preschool, Day Care, Childcare, Tuition All Subjects, Classical Dance for kids, Chess for children, Phonics classes, 11th 12th tuition, early learning center">
-  <meta name="author" content="BOUNEY BEARS">
+    content="Bouncy Bears, Daycare, Tuition, Activity Centre, Play School, Preschool, Childcare, Tuition All Subjects, Classical Dance for kids, Chess for children, Phonics classes, 11th 12th tuition, Gopalapuram Chennai">
+  <meta name="author" content="Bouncy Bears">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#B45309">
   <script>
@@ -31,17 +31,17 @@
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="BOUNEY BEARS | Where Little Minds Learn, Play & Grow">
+  <meta property="og:title" content="Bouncy Bears | Daycare, Tuition &amp; Activity Centre">
   <meta property="og:description"
-    content="A warm and nurturing space for children to learn, explore, build confidence and grow with care. Offering Play School, Day Care, Tuition, Dance & Chess.">
+    content="Premium educational heaven combining early childhood discipline and heartfelt care. Daycare, Tuition &amp; Activity Centre in Gopalapuram, Chennai.">
   <meta property="og:image" content="assets/hero-classroom.jpg">
-  <meta property="og:site_name" content="BOUNEY BEARS">
+  <meta property="og:site_name" content="Bouncy Bears">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BOUNEY BEARS | Preschool & Day Care">
+  <meta name="twitter:title" content="Bouncy Bears | Daycare, Tuition &amp; Activity Centre">
   <meta name="twitter:description"
-    content="A warm and nurturing space for children to learn, explore, build confidence and grow with care.">
+    content="Premium educational heaven combining early childhood discipline and heartfelt care. Daycare, Tuition &amp; Activity Centre.">
   <meta name="twitter:image" content="assets/hero-classroom.jpg">
 
   <!-- Google Fonts -->
@@ -59,11 +59,20 @@
   {
     "@context": "https://schema.org",
     "@type": ["ChildCare", "EducationalOrganization"],
-    "name": "BOUNEY BEARS",
-    "description": "Preschool, Day Care, Tuition & Children's Activity Centre providing a warm and nurturing space for children ages 2+.",
+    "name": "Bouncy Bears",
+    "description": "Premium educational heaven combining early childhood discipline and heartfelt care. Daycare, Tuition & Activity Centre in Gopalapuram, Chennai.",
     "telephone": ["+919940462534", "+914431451925"],
-    "email": "boneybearschildcare@gmail.com",
+    "email": "bouncybearschildcare@gmail.com",
     "image": "assets/hero-classroom.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8, 2nd St, Valluvar Nagar",
+      "addressLocality": "Gopalapuram, Chennai",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "600086",
+      "addressCountry": "IN"
+    },
+    "hasMap": "https://maps.app.goo.gl/qwFYS7hceevQxYQK6?g_st=ac",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -141,12 +150,21 @@
 <body>
 
   <!-- ==========================================================================
+       0. FULL-SCREEN VIDEO PRELOADER
+       ========================================================================== -->
+  <div id="video-preloader" class="video-preloader">
+    <video id="preloader-video" class="preloader-video" muted playsinline preload="auto">
+      <source src="assets/pre_loading_video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- ==========================================================================
        1. STICKY / INTELLIGENT NAVBAR
        ========================================================================== -->
   <header class="site-header" id="siteHeader">
     <div class="container navbar">
-      <a href="#home" class="brand-logo" aria-label="BOUNEY BEARS Home">
-        <img src="assets/LOGO.jpeg" alt="BOUNEY BEARS Logo" style="height: 48px; width: auto; object-fit: contain;">
+      <a href="#home" class="brand-logo" aria-label="Bouncy Bears Home">
+        <img src="assets/LOGO.jpeg" alt="Bouncy Bears Logo" style="height: 48px; width: auto; object-fit: contain;">
       </a>
 
       <!-- Desktop Nav Menu -->
@@ -154,10 +172,11 @@
         <ul class="nav-menu">
           <li><a href="#home" class="nav-link active">Home</a></li>
           <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#programs" class="nav-link">Programs</a></li>
           <li><a href="#activities" class="nav-link">Activities</a></li>
           <li><a href="#facilities" class="nav-link">Facilities</a></li>
-          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#why-choose-us" class="nav-link">Why Choose Us</a></li>
           <li><a href="#enquiry" class="nav-link">Admissions</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -199,7 +218,7 @@
   <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
     <div class="drawer-header">
       <a href="#home" class="brand-logo">
-        <img src="assets/LOGO.jpeg" alt="BOUNEY BEARS Logo" style="height: 36px; width: auto; object-fit: contain;">
+        <img src="assets/LOGO.jpeg" alt="Bouncy Bears Logo" style="height: 36px; width: auto; object-fit: contain;">
       </a>
       <div style="display: flex; align-items: center; gap: 0.6rem;">
         <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme" title="Toggle theme">
@@ -227,18 +246,19 @@
     </div>
     <ul class="drawer-links">
       <li><a href="#home" class="drawer-link">Home</a></li>
-      <li><a href="#about" class="drawer-link">About BOUNEY BEARS</a></li>
+      <li><a href="#about" class="drawer-link">About Bouncy Bears</a></li>
+      <li><a href="#gallery" class="drawer-link">Photo Gallery</a></li>
       <li><a href="#programs" class="drawer-link">Programs & Services</a></li>
       <li><a href="#development" class="drawer-link">Learning & Development</a></li>
       <li><a href="#daycare" class="drawer-link">Day Care Features</a></li>
       <li><a href="#activities" class="drawer-link">Extracurricular Activities</a></li>
       <li><a href="#facilities" class="drawer-link">Environment & Facilities</a></li>
-      <li><a href="#gallery" class="drawer-link">Photo Gallery</a></li>
+      <li><a href="#why-choose-us" class="drawer-link">Why Choose Us</a></li>
       <li><a href="#contact" class="drawer-link">Contact & Hours</a></li>
     </ul>
     <div class="drawer-footer">
       <a href="#enquiry" class="btn btn-blue-apply" style="width:100%; text-align:center;">Apply Now</a>
-      <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
+      <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
          class="btn btn-whatsapp" 
          target="_blank" 
          rel="noopener noreferrer" 
@@ -262,7 +282,7 @@
   <section class="hero-section" id="home">
     <!-- Background Image Layer -->
     <div class="hero-bg-layer">
-      <img src="assets/Home 2.jpg" alt="BOUNEY BEARS preschool" class="hero-bg-img">
+      <img src="assets/Home 2.jpg" alt="Bouncy Bears preschool" class="hero-bg-img">
       <div class="hero-bg-overlay"></div>
       <!-- Subtle particle dots for premium feel -->
       <div class="hero-particles" id="heroParticles"></div>
@@ -272,7 +292,7 @@
     <div class="container hero-center">
       <!-- Badge Pill (Gold outline pill like "ESTABLISHED 1993" in reference) -->
       <div class="hero-est-badge fade-up">
-        ESTABLISHED 2020
+        ESTABLISHED
       </div>
 
       <!-- Two-tone Headline -->
@@ -283,8 +303,8 @@
 
       <!-- Supporting Subtext -->
       <p class="hero-main-subtext fade-up">
-        A premium educational haven combining early childhood discipline, safety, and heartfelt care.<br class="hero-br">
-        Guiding Play School, Day Care, Tuition &amp; Activity Centre since 2020.
+        Premium educational heaven combining early childhood discipline and heartfelt care.<br class="hero-br">
+        Daycare, Tuition &amp; Activity Centre
       </p>
 
       <!-- CTA Buttons Row -->
@@ -292,11 +312,11 @@
         <a href="#enquiry" class="btn btn-gold-arrow">
           Admissions Open &nbsp;&rarr;
         </a>
-        <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs."
+        <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs."
            class="btn btn-green-solid"
            target="_blank" rel="noopener noreferrer"
            data-whatsapp-action
-           data-whatsapp-msg="Hi BOUNEY BEARS, I would like to enquire about your programs.">
+           data-whatsapp-msg="Hi Bouncy Bears, I would like to enquire about your programs.">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.579 1.769.882 2.781.883h.001c3.181 0 5.767-2.587 5.768-5.766.001-3.18-2.585-5.767-5.769-5.767zm7.408 5.766c-.001 4.088-3.327 7.414-7.414 7.414-.001 0-.001 0 0 0-1.285 0-2.476-.324-3.535-.913l-4.49 1.177 1.198-4.381c-.696-1.135-1.063-2.433-1.063-3.797 0-4.088 3.326-7.414 7.414-7.414 4.088 0 7.414 3.326 7.414 7.414z"/>
           </svg>
@@ -354,38 +374,45 @@
        ========================================================================== -->
   <section class="highlights-section">
     <div class="container">
-      <div class="highlights-grid">
-        <div class="highlight-stat-card">
-          <div class="stat-value">2+</div>
-          <div class="stat-label">Minimum Age</div>
-          <div class="stat-sub">Early Childhood</div>
+      <div class="carousel-wrapper highlights-carousel">
+        <button class="carousel-btn prev" aria-label="Previous items">❮</button>
+        <div class="carousel-track-container" id="highlights-track">
+          <div class="highlights-grid carousel-track">
+            <div class="highlight-stat-card carousel-item">
+              <div class="stat-value">2+</div>
+              <div class="stat-label">Minimum Age</div>
+              <div class="stat-sub">Early Childhood</div>
+            </div>
+            <div class="highlight-stat-card carousel-item">
+              <div class="stat-value">Play School</div>
+              <div class="stat-label">Learning & Care</div>
+              <div class="stat-sub">Foundational Steps</div>
+            </div>
+            <div class="highlight-stat-card carousel-item">
+              <div class="stat-value">Day Care</div>
+              <div class="stat-label">Extended Care</div>
+              <div class="stat-sub">Working Parents' Peace</div>
+            </div>
+            <div class="highlight-stat-card carousel-item">
+              <div class="stat-value">All Subjects</div>
+              <div class="stat-label">Tuition Support</div>
+              <div class="stat-sub">School Academic Help</div>
+            </div>
+            <div class="highlight-stat-card carousel-item">
+              <div class="stat-value">Classical Dance</div>
+              <div class="stat-label">Creative Growth</div>
+              <div class="stat-sub">Ages ~3–5 Years</div>
+            </div>
+            <div class="highlight-stat-card carousel-item">
+              <div class="stat-value">Chess</div>
+              <div class="stat-label">Skill Development</div>
+              <div class="stat-sub">Ages ~7+ Years</div>
+            </div>
+          </div>
         </div>
-        <div class="highlight-stat-card">
-          <div class="stat-value">Play School</div>
-          <div class="stat-label">Learning & Care</div>
-          <div class="stat-sub">Foundational Steps</div>
-        </div>
-        <div class="highlight-stat-card">
-          <div class="stat-value">Day Care</div>
-          <div class="stat-label">Extended Care</div>
-          <div class="stat-sub">Working Parents' Peace</div>
-        </div>
-        <div class="highlight-stat-card">
-          <div class="stat-value">All Subjects</div>
-          <div class="stat-label">Tuition Support</div>
-          <div class="stat-sub">School Academic Help</div>
-        </div>
-        <div class="highlight-stat-card">
-          <div class="stat-value">Classical Dance</div>
-          <div class="stat-label">Creative Growth</div>
-          <div class="stat-sub">Ages ~3–5 Years</div>
-        </div>
-        <div class="highlight-stat-card">
-          <div class="stat-value">Chess</div>
-          <div class="stat-label">Skill Development</div>
-          <div class="stat-sub">Ages ~7+ Years</div>
-        </div>
+        <button class="carousel-btn next" aria-label="Next items">❯</button>
       </div>
+      <div class="carousel-pagination" id="highlights-pagination"></div>
     </div>
   </section>
 
@@ -397,7 +424,7 @@
       <!-- Visual Split -->
       <div class="about-image-stack fade-up">
         <img src="assets/Home 1.jpg" alt="Children engaged in interactive learning" class="about-main-img">
-        <img src="assets/Home 4.jpeg" alt="Playful classroom moments at BOUNEY BEARS" class="about-floating-img">
+        <img src="assets/Home 4.jpeg" alt="Playful classroom moments at Bouncy Bears" class="about-floating-img">
         <div class="about-badge-card">
           <div class="about-badge-number">2+</div>
           <div class="about-badge-label">Years<br>Minimum Age</div>
@@ -406,10 +433,10 @@
 
       <!-- Content Split -->
       <div class="about-content fade-up">
-        <div class="section-badge">About BOUNEY BEARS</div>
+        <div class="section-badge">About Bouncy Bears</div>
         <h2 class="section-title">Growing Curious Minds with Care</h2>
         <p style="margin-bottom: 1.2rem;">
-          At <strong>BOUNEY BEARS</strong>, we believe every child deserves a safe, supportive, and joyful environment to blossom. Designed for preschool learners, working families needing dependable day care, and school students seeking academic and extracurricular guidance.
+          At <strong>Bouncy Bears</strong>, we are a premium educational heaven combining early childhood discipline and heartfelt care. Designed for preschool learners, working families needing dependable daycare, and school students seeking academic tuition and enrichment activities.
         </p>
         <p style="margin-bottom: 1.5rem;">
           Our focus is centered around warm personal attention, play-based exploration, confidence building, and nurturing lifelong curiosity in every child who walks through our doors.
@@ -452,75 +479,32 @@
   </section>
 
   <!-- ==========================================================================
-       5. WHY PARENTS CHOOSE US
+       5. GALLERY SECTION
        ========================================================================== -->
-  <section class="why-section">
+  <section class="gallery-section" id="gallery">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-badge sage">Why Choose Us</div>
-        <h2 class="section-title">Built Around Care, Trust & Child Growth</h2>
+        <div class="section-badge sage">Life at Bouncy Bears</div>
+        <h2 class="section-title">Moments of Learning, Joy & Discovery</h2>
         <p class="section-desc">
-          We combine a nurturing home-like warmth with structured development and dependable support for families.
+          Click any photo to view in high resolution. Centralized image data allows easy photo updates anytime.
         </p>
       </div>
 
-      <div class="why-grid">
-        <!-- Card 1 -->
-        <div class="why-card fade-up">
-          <div class="why-icon-wrap">🏡</div>
-          <h3 class="why-card-title">Caring Environment</h3>
-          <p class="why-card-desc">
-            A gentle, attentive atmosphere where children feel protected, heard, and encouraged to be themselves every day.
-          </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="why-card sage fade-up">
-          <div class="why-icon-wrap">🧩</div>
-          <h3 class="why-card-title">Play-Based Learning</h3>
-          <p class="why-card-desc">
-            Early concepts are introduced through hands-on activities, sensory play, and joyful exploration that spark genuine curiosity.
-          </p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="why-card fade-up">
-          <div class="why-icon-wrap">💛</div>
-          <h3 class="why-card-title">Day Care Support</h3>
-          <p class="why-card-desc">
-            Reliable, structured daytime care for working parents with supervised rest, nutrition routines, and engaging play.
-          </p>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="why-card sage fade-up">
-          <div class="why-icon-wrap">📚</div>
-          <h3 class="why-card-title">Academic Assistance</h3>
-          <p class="why-card-desc">
-            Patient subject tuition covering school syllabus, concept clarification, and study habits from primary to 12th standard.
-          </p>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="why-card fade-up">
-          <div class="why-icon-wrap">🎨</div>
-          <h3 class="why-card-title">Creative Activities</h3>
-          <p class="why-card-desc">
-            Opportunities to explore classical dance, art, and expressive cultural learning tailored to early ages.
-          </p>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="why-card sage fade-up">
-          <div class="why-icon-wrap">♟️</div>
-          <h3 class="why-card-title">Skill Development</h3>
-          <p class="why-card-desc">
-            Targeted programs like Chess and Phonics that train strategic thinking, focus, patience, and language fluency.
-          </p>
-        </div>
-      </div>
+      <div id="dynamic-galleries-container"></div>
     </div>
   </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">&larr;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">&rarr;</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImg">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        6. PROGRAMS & SERVICES
@@ -528,10 +512,10 @@
   <section class="programs-section" id="programs">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-badge">Programs & Services</div>
+        <div class="section-badge">Daycare, Tuition &amp; Activity Centre</div>
         <h2 class="section-title">Comprehensive Offerings for Every Stage</h2>
         <p class="section-desc">
-          From toddler play school and full-day childcare to academic tuitions and specialized skill academies.
+          From toddler play school and full-day daycare to academic tuitions and specialized skill academies.
         </p>
       </div>
 
@@ -562,12 +546,12 @@
           </ul>
           <div class="program-card-actions">
             <button class="btn btn-primary btn-sm program-enquire-btn" data-program="Play School">Enquire Now</button>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Play%20School%20program." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Play%20School%20program." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to know more about the Play School program.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to know more about the Play School program.">
               WhatsApp
             </a>
           </div>
@@ -599,12 +583,12 @@
           </ul>
           <div class="program-card-actions">
             <button class="btn btn-primary btn-sm program-enquire-btn" data-program="Day Care">Enquire Now</button>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Day%20Care%20services." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Day%20Care%20services." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to know more about your Day Care services.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to know more about your Day Care services.">
               WhatsApp
             </a>
           </div>
@@ -636,12 +620,12 @@
           </ul>
           <div class="program-card-actions">
             <button class="btn btn-primary btn-sm program-enquire-btn" data-program="Tuition — All Subjects">Enquire Now</button>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20know%20more%20about%20Tuition%20for%20all%20subjects." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20know%20more%20about%20Tuition%20for%20all%20subjects." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to know more about Tuition for all subjects.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to know more about Tuition for all subjects.">
               WhatsApp
             </a>
           </div>
@@ -673,12 +657,12 @@
           </ul>
           <div class="program-card-actions">
             <button class="btn btn-primary btn-sm program-enquire-btn" data-program="Classical Dance">Enquire Now</button>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20know%20more%20about%20Classical%20Dance%20classes." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20know%20more%20about%20Classical%20Dance%20classes." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to know more about Classical Dance classes.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to know more about Classical Dance classes.">
               WhatsApp
             </a>
           </div>
@@ -710,12 +694,12 @@
           </ul>
           <div class="program-card-actions">
             <button class="btn btn-primary btn-sm program-enquire-btn" data-program="Chess">Enquire Now</button>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20know%20more%20about%20Chess%20coaching." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20know%20more%20about%20Chess%20coaching." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to know more about Chess coaching.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to know more about Chess coaching.">
               WhatsApp
             </a>
           </div>
@@ -747,12 +731,12 @@
           </ul>
           <div class="program-card-actions">
             <button class="btn btn-primary btn-sm program-enquire-btn" data-program="Phonics">Enquire Now</button>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Phonics%20program." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20know%20more%20about%20the%20Phonics%20program." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to know more about the Phonics program.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to know more about the Phonics program.">
               WhatsApp
             </a>
           </div>
@@ -784,12 +768,12 @@
           </ul>
           <div class="program-card-actions">
             <button class="btn btn-primary btn-sm program-enquire-btn" data-program="11th & 12th Tuition">Enquire Now</button>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20know%20more%20about%2011th%20%26%2012th%20Class%20Tuition." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20know%20more%20about%2011th%20%26%2012th%20Class%20Tuition." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to know more about 11th & 12th Class Tuition.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to know more about 11th & 12th Class Tuition.">
               WhatsApp
             </a>
           </div>
@@ -807,59 +791,66 @@
         <div class="section-badge sage">Holistic Growth</div>
         <h2 class="section-title">Nurturing the Whole Child</h2>
         <p class="section-desc">
-          At BOUNEY BEARS, learning goes beyond basic childcare. We guide children across essential foundational development areas.
+          At Bouncy Bears, learning goes beyond basic childcare. We guide children across essential foundational development areas.
         </p>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-card fade-up">
-          <div class="bento-icon">💡</div>
-          <h3 class="bento-title">Learning</h3>
-          <p class="bento-desc">Building cognitive interest through sensory exploration, questioning, and engaging play.</p>
-        </div>
+      <div class="carousel-wrapper learning-carousel">
+        <button class="carousel-btn prev" aria-label="Previous items">❮</button>
+        <div class="carousel-track-container" id="learning-track">
+          <div class="bento-grid carousel-track">
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">💡</div>
+              <h3 class="bento-title">Learning</h3>
+              <p class="bento-desc">Building cognitive interest through sensory exploration, questioning, and engaging play.</p>
+            </div>
 
-        <div class="bento-card fade-up">
-          <div class="bento-icon">🗣️</div>
-          <h3 class="bento-title">Communication</h3>
-          <p class="bento-desc">Expressing thoughts clearly, listening actively, and expanding early vocabulary.</p>
-        </div>
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">🗣️</div>
+              <h3 class="bento-title">Communication</h3>
+              <p class="bento-desc">Expressing thoughts clearly, listening actively, and expanding early vocabulary.</p>
+            </div>
 
-        <div class="bento-card fade-up">
-          <div class="bento-icon">🎨</div>
-          <h3 class="bento-title">Creativity</h3>
-          <p class="bento-desc">Unlocking imagination through art, dance, dramatic play, and music.</p>
-        </div>
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">🎨</div>
+              <h3 class="bento-title">Creativity</h3>
+              <p class="bento-desc">Unlocking imagination through art, dance, dramatic play, and music.</p>
+            </div>
 
-        <div class="bento-card fade-up">
-          <div class="bento-icon">🌟</div>
-          <h3 class="bento-title">Confidence</h3>
-          <p class="bento-desc">Encouraging self-esteem through supportive praise, small victories, and safe challenges.</p>
-        </div>
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">🌟</div>
+              <h3 class="bento-title">Confidence</h3>
+              <p class="bento-desc">Encouraging self-esteem through supportive praise, small victories, and safe challenges.</p>
+            </div>
 
-        <div class="bento-card fade-up">
-          <div class="bento-icon">🧩</div>
-          <h3 class="bento-title">Problem Solving</h3>
-          <p class="bento-desc">Logical puzzle games, chess fundamentals, and cause-and-effect reasoning.</p>
-        </div>
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">🧩</div>
+              <h3 class="bento-title">Problem Solving</h3>
+              <p class="bento-desc">Logical puzzle games, chess fundamentals, and cause-and-effect reasoning.</p>
+            </div>
 
-        <div class="bento-card fade-up">
-          <div class="bento-icon">🤝</div>
-          <h3 class="bento-title">Social Skills</h3>
-          <p class="bento-desc">Sharing, taking turns, showing empathy, and collaborating joyfully with peers.</p>
-        </div>
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">🤝</div>
+              <h3 class="bento-title">Social Skills</h3>
+              <p class="bento-desc">Sharing, taking turns, showing empathy, and collaborating joyfully with peers.</p>
+            </div>
 
-        <div class="bento-card fade-up">
-          <div class="bento-icon">🏃</div>
-          <h3 class="bento-title">Physical Activity</h3>
-          <p class="bento-desc">Indoor and outdoor gross motor movements, balance, posture, and active games.</p>
-        </div>
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">🏃</div>
+              <h3 class="bento-title">Physical Activity</h3>
+              <p class="bento-desc">Indoor and outdoor gross motor movements, balance, posture, and active games.</p>
+            </div>
 
-        <div class="bento-card fade-up">
-          <div class="bento-icon">⏱️</div>
-          <h3 class="bento-title">Discipline</h3>
-          <p class="bento-desc">Gentle daily routines, tidiness habits, patience, and mutual respect.</p>
+            <div class="bento-card fade-up carousel-item">
+              <div class="bento-icon">⏱️</div>
+              <h3 class="bento-title">Discipline</h3>
+              <p class="bento-desc">Gentle daily routines, tidiness habits, patience, and mutual respect.</p>
+            </div>
+          </div>
         </div>
+        <button class="carousel-btn next" aria-label="Next items">❯</button>
       </div>
+      <div class="carousel-pagination" id="learning-pagination"></div>
     </div>
   </section>
 
@@ -872,7 +863,7 @@
         <div class="section-badge">Day Care Services</div>
         <h2 class="section-title">Care That Gives Parents Peace of Mind</h2>
         <p style="margin-bottom: 1.2rem;">
-          Balancing work and parenting requires dependable support. At BOUNEY BEARS, our day care is structured to be an extension of home — warm, attentive, clean, and lovingly monitored.
+          Balancing work and parenting requires dependable support. At Bouncy Bears, our day care is structured to be an extension of home — warm, attentive, clean, and lovingly monitored.
         </p>
 
         <div class="daycare-points">
@@ -910,12 +901,12 @@
         </div>
 
         <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-          <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20ask%20about%20your%20Day%20Care%20services." 
+          <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20ask%20about%20your%20Day%20Care%20services." 
              class="btn btn-whatsapp" 
              target="_blank" 
              rel="noopener noreferrer" 
              data-whatsapp-action 
-             data-whatsapp-msg="Hi BOUNEY BEARS, I would like to ask about your Day Care services.">
+             data-whatsapp-msg="Hi Bouncy Bears, I would like to ask about your Day Care services.">
             Ask About Day Care
           </a>
           <a href="tel:+919940462534" class="btn btn-outline" data-phone-primary>Call: 99404 62534</a>
@@ -924,7 +915,7 @@
 
       <div class="daycare-visual fade-up">
         <div class="daycare-image-card">
-          <img src="assets/Home 3.jpeg" alt="Children reading and resting comfortably in BOUNEY BEARS day care">
+          <img src="assets/Home 3.jpeg" alt="Children reading and resting comfortably in Bouncy Bears day care">
           <div class="daycare-floating-chip">
             <div class="daycare-chip-icon">💛</div>
             <div>
@@ -1104,32 +1095,75 @@
   </section>
 
   <!-- ==========================================================================
-       11. GALLERY SECTION
+       11. WHY PARENTS CHOOSE US
        ========================================================================== -->
-  <section class="gallery-section" id="gallery">
+  <section class="why-section" id="why-choose-us">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-badge sage">Life at BOUNEY BEARS</div>
-        <h2 class="section-title">Moments of Learning, Joy & Discovery</h2>
+        <div class="section-badge sage">Why Choose Us</div>
+        <h2 class="section-title">Built Around Care, Trust & Child Growth</h2>
         <p class="section-desc">
-          Click any photo to view in high resolution. Centralized image data allows easy photo updates anytime.
+          We combine a nurturing home-like warmth with structured development and dependable support for families.
         </p>
       </div>
 
-      <div id="dynamic-galleries-container"></div>
+      <div class="why-grid">
+        <!-- Card 1 -->
+        <div class="why-card fade-up">
+          <div class="why-icon-wrap">🏡</div>
+          <h3 class="why-card-title">Caring Environment</h3>
+          <p class="why-card-desc">
+            A gentle, attentive atmosphere where children feel protected, heard, and encouraged to be themselves every day.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="why-card sage fade-up">
+          <div class="why-icon-wrap">🧩</div>
+          <h3 class="why-card-title">Play-Based Learning</h3>
+          <p class="why-card-desc">
+            Early concepts are introduced through hands-on activities, sensory play, and joyful exploration that spark genuine curiosity.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="why-card fade-up">
+          <div class="why-icon-wrap">💛</div>
+          <h3 class="why-card-title">Day Care Support</h3>
+          <p class="why-card-desc">
+            Reliable, structured daytime care for working parents with supervised rest, nutrition routines, and engaging play.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="why-card sage fade-up">
+          <div class="why-icon-wrap">📚</div>
+          <h3 class="why-card-title">Academic Assistance</h3>
+          <p class="why-card-desc">
+            Patient subject tuition covering school syllabus, concept clarification, and study habits from primary to 12th standard.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="why-card fade-up">
+          <div class="why-icon-wrap">🎨</div>
+          <h3 class="why-card-title">Creative Activities</h3>
+          <p class="why-card-desc">
+            Opportunities to explore classical dance, art, and expressive cultural learning tailored to early ages.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="why-card sage fade-up">
+          <div class="why-icon-wrap">♟️</div>
+          <h3 class="why-card-title">Skill Development</h3>
+          <p class="why-card-desc">
+            Targeted programs like Chess and Phonics that train strategic thinking, focus, patience, and language fluency.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
-
-  <!-- Lightbox Modal -->
-  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image preview">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">&larr;</button>
-    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">&rarr;</button>
-    <div class="lightbox-content">
-      <img src="" alt="" id="lightboxImg">
-      <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-  </div>
 
   <!-- ==========================================================================
        12. PARENT-FOCUSED CTA BANNER
@@ -1139,7 +1173,7 @@
       <div class="cta-banner-card fade-up">
         <h2 class="cta-banner-title">Let's Find the Right Program for Your Child</h2>
         <p class="cta-banner-desc">
-          Have questions about admissions, play school, day care, tuition or activities? Get in touch with BOUNEY BEARS.
+          Have questions about admissions, play school, day care, tuition or activities? Get in touch with Bouncy Bears.
         </p>
         <div class="cta-banner-actions">
           <a href="tel:+919940462534" class="btn btn-outline btn-lg cta-btn-call" data-phone-primary>
@@ -1148,12 +1182,12 @@
             </svg>
             Call Now: 99404 62534
           </a>
-          <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
+          <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
              class="btn btn-whatsapp btn-lg" 
              target="_blank" 
              rel="noopener noreferrer" 
              data-whatsapp-action 
-             data-whatsapp-msg="Hi BOUNEY BEARS, I would like to enquire about your programs.">
+             data-whatsapp-msg="Hi Bouncy Bears, I would like to enquire about your programs.">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.579 1.769.882 2.781.883h.001c3.181 0 5.767-2.587 5.768-5.766.001-3.18-2.585-5.767-5.769-5.767zm7.408 5.766c-.001 4.088-3.327 7.414-7.414 7.414-.001 0-.001 0 0 0-1.285 0-2.476-.324-3.535-.913l-4.49 1.177 1.198-4.381c-.696-1.135-1.063-2.433-1.063-3.797 0-4.088 3.326-7.414 7.414-7.414 4.088 0 7.414 3.326 7.414 7.414z"/>
             </svg>
@@ -1173,7 +1207,7 @@
       <!-- Left Info Card -->
       <div class="enquiry-info-card fade-up">
         <div class="section-badge">Admissions & Enquiries</div>
-        <h2 class="enquiry-info-title">Connect with BOUNEY BEARS</h2>
+        <h2 class="enquiry-info-title">Connect with Bouncy Bears</h2>
         <p class="enquiry-info-text">
           Whether you are looking for early play school enrollment (ages 2+), reliable day care for your work hours, or after-school tuition and activities, we are here to guide you.
         </p>
@@ -1195,11 +1229,11 @@
             </div>
           </a>
 
-          <a href="mailto:boneybearschildcare@gmail.com" class="channel-card" data-email-bind>
+          <a href="mailto:bouncybearschildcare@gmail.com" class="channel-card" data-email-bind>
             <div class="channel-icon">✉️</div>
             <div class="channel-info">
               <h4>Official Email</h4>
-              <p>boneybearschildcare@gmail.com</p>
+              <p>bouncybearschildcare@gmail.com</p>
             </div>
           </a>
         </div>
@@ -1207,7 +1241,7 @@
         <div style="background: var(--color-bg-page); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 4px solid var(--color-primary);">
           <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem;">Monday Timings: 9:00 AM – 9:00 PM</div>
           <div style="font-size: 0.85rem; color: var(--color-text-muted);">
-            Sunday: Closed · For Tue–Sat current timings or exact location, contact us directly.
+            Sunday: Closed · Located at 8, 2nd St, Valluvar Nagar, Gopalapuram, Chennai – 600086. Contact us for current timings.
           </div>
         </div>
       </div>
@@ -1219,7 +1253,7 @@
           Fill in your details below. We will get in touch promptly to discuss your child's requirements.
         </p>
 
-        <form id="bouneyEnquiryForm" novalidate>
+        <form id="bouncyEnquiryForm" novalidate>
           <div class="form-group-row">
             <div class="form-group">
               <label for="parentName" class="form-label">Parent Name *</label>
@@ -1318,27 +1352,45 @@
         </div>
 
         <!-- 2. Email & Location -->
-        <div class="contact-info-box fade-up">
+        <div class="contact-info-box contact-location-card fade-up">
           <div class="contact-box-icon">📍</div>
-          <h3 class="contact-box-title">Email & Location</h3>
+          <h3 class="contact-box-title">Email &amp; Location</h3>
           <p class="contact-box-text">Write to us at:</p>
-          <a href="mailto:boneybearschildcare@gmail.com" class="contact-box-highlight" style="font-size: 0.95rem; word-break: break-all;" data-email-bind>
-            boneybearschildcare@gmail.com
+          <a href="mailto:bouncybearschildcare@gmail.com" class="contact-box-highlight" style="font-size: 0.95rem; word-break: break-all;" data-email-bind>
+            bouncybearschildcare@gmail.com
           </a>
-          <div style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--color-border-subtle);">
-            <div style="font-weight: 700; font-size: 0.92rem; color: var(--color-text-title);">Campus Address:</div>
-            <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 0.2rem;">
-              Contact us for location details
-            </p>
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20please%20share%20your%20campus%20location%20details." 
-               class="btn btn-whatsapp btn-sm" 
-               style="margin-top: 0.7rem;" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, please share your campus location details.">
-              Request Location on WhatsApp
-            </a>
+          <div class="contact-location-details" style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--color-border-subtle);">
+            <h4 class="contact-location-subtitle">Our Location</h4>
+            <address class="contact-location-address">
+              8, 2nd St, Valluvar Nagar, Gopalapuram, Chennai, Tamil Nadu 600086
+            </address>
+
+            <div class="map-embed-wrapper">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7056637385966!2d80.2478335!3d13.0543666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266383b772c61%3A0x6413e813d3fb985!2sBouncy%20Bears!5e0!3m2!1sen!2sin!4v1728628000000!5m2!1sen!2sin"
+                width="100%"
+                height="220"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="Bouncy Bears Google Maps Location">
+              </iframe>
+            </div>
+
+            <div style="margin-top: 0.75rem;">
+              <a href="https://maps.app.goo.gl/qwFYS7hceevQxYQK6?g_st=ac" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="map-directions-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Open in Google Maps</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -1380,18 +1432,18 @@
         <!-- Col 1: Brand & Philosophy -->
         <div class="footer-brand">
           <a href="#home" class="brand-logo" style="margin-bottom: 1rem;">
-            <img src="assets/LOGO.jpeg" alt="BOUNEY BEARS Logo" style="height: 48px; width: auto; object-fit: contain;">
+            <img src="assets/LOGO.jpeg" alt="Bouncy Bears Logo" style="height: 48px; width: auto; object-fit: contain;">
           </a>
           <p>
             A warm, modern, and trustworthy haven where children learn through play, build confidence, and receive caring personal attention.
           </p>
           <div style="margin-top: 1.2rem;">
-            <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
+            <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
                class="btn btn-whatsapp btn-sm" 
                target="_blank" 
                rel="noopener noreferrer" 
                data-whatsapp-action 
-               data-whatsapp-msg="Hi BOUNEY BEARS, I would like to enquire about your programs.">
+               data-whatsapp-msg="Hi Bouncy Bears, I would like to enquire about your programs.">
               WhatsApp Us
             </a>
           </div>
@@ -1402,7 +1454,7 @@
           <h4 class="footer-col-title">Quick Navigation</h4>
           <ul class="footer-links">
             <li><a href="#home" class="footer-link">Home</a></li>
-            <li><a href="#about" class="footer-link">About BOUNEY BEARS</a></li>
+            <li><a href="#about" class="footer-link">About Bouncy Bears</a></li>
             <li><a href="#programs" class="footer-link">Programs & Services</a></li>
             <li><a href="#development" class="footer-link">Learning & Development</a></li>
             <li><a href="#daycare" class="footer-link">Day Care Features</a></li>
@@ -1428,7 +1480,7 @@
 
         <!-- Col 4: Verified Contact Info -->
         <div class="footer-col">
-          <h4 class="footer-col-title">Contact BOUNEY BEARS</h4>
+          <h4 class="footer-col-title">Contact Bouncy Bears</h4>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📞</span>
             <div>
@@ -1446,7 +1498,7 @@
           <div class="footer-contact-item">
             <span class="footer-contact-icon">✉️</span>
             <div>
-              <div style="color: #FFFFFF; font-weight: 600; word-break: break-all;">boneybearschildcare@gmail.com</div>
+              <div style="color: #FFFFFF; font-weight: 600; word-break: break-all;">bouncybearschildcare@gmail.com</div>
               <div style="font-size: 0.82rem;">Official Inquiries</div>
             </div>
           </div>
@@ -1454,7 +1506,7 @@
             <span class="footer-contact-icon">📍</span>
             <div>
               <div style="color: #FFFFFF; font-weight: 600;">Campus Location</div>
-              <div style="font-size: 0.82rem;">Contact us for location details</div>
+              <div style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.8);">8, 2nd St, Valluvar Nagar, Gopalapuram, Chennai – 600086</div>
             </div>
           </div>
         </div>
@@ -1462,10 +1514,10 @@
 
       <div class="footer-bottom">
         <div>
-          &copy; <span id="currentYear">2026</span> <strong>BOUNEY BEARS</strong>. All rights reserved.
+          &copy; <span id="currentYear">2026</span> <strong>Bouncy Bears</strong>. All rights reserved.
         </div>
         <div style="font-size: 0.82rem;">
-          Preschool · Day Care · Tuition & Children's Activity Centre
+          Daycare, Tuition &amp; Activity Centre
         </div>
       </div>
     </div>
@@ -1486,13 +1538,13 @@
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
       </svg>
     </a>
-    <a href="https://wa.me/919940462534?text=Hi%20BOUNEY%20BEARS%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
+    <a href="https://wa.me/919940462534?text=Hi%20Bouncy Bears%2C%20I%20would%20like%20to%20enquire%20about%20your%20programs." 
        class="floating-social-btn whatsapp" 
        target="_blank" 
        rel="noopener noreferrer" 
        aria-label="Chat on WhatsApp" 
        data-whatsapp-action 
-       data-whatsapp-msg="Hi BOUNEY BEARS, I would like to enquire about your programs.">
+       data-whatsapp-msg="Hi Bouncy Bears, I would like to enquire about your programs.">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.579 1.769.882 2.781.883h.001c3.181 0 5.767-2.587 5.768-5.766.001-3.18-2.585-5.767-5.769-5.767zm7.408 5.766c-.001 4.088-3.327 7.414-7.414 7.414-.001 0-.001 0 0 0-1.285 0-2.476-.324-3.535-.913l-4.49 1.177 1.198-4.381c-.696-1.135-1.063-2.433-1.063-3.797 0-4.088 3.326-7.414 7.414-7.414 4.088 0 7.414 3.326 7.414 7.414z"/>
       </svg>
@@ -1501,7 +1553,7 @@
 
   <!-- Central Configuration & Logic Scripts -->
   <script src="config.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 
   <script>
     // Ensure current year is updated
