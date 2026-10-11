@@ -9,6 +9,7 @@
 (function() {
   var preloader = document.getElementById('video-preloader');
   var video = document.getElementById('preloader-video');
+  var skipBtn = document.getElementById('preloader-skip-btn');
   
   if (!preloader || !video) return;
 
@@ -21,46 +22,91 @@
     return;
   }
 
-  // Prevent scrolling
+  // Prevent scrolling while preloader is active
   document.body.classList.add('preloader-active');
 
+  var removed = false;
   function removePreloader() {
-    if (preloader.classList.contains('fade-out')) return;
+    if (removed) return;
+    removed = true;
     
     preloader.classList.add('fade-out');
     document.body.classList.remove('preloader-active');
     sessionStorage.setItem('bouncyBearsPreloaderSeen', 'true');
     
-    // Completely remove from DOM after fade out to free memory
+    try {
+      video.pause();
+    } catch(e) {}
+
+    // Completely remove from DOM after fade out to free memory and video resources
     setTimeout(function() {
       if (preloader.parentNode) {
         preloader.parentNode.removeChild(preloader);
       }
-    }, 800);
+    }, 700);
   }
 
-  // Event Listeners
-  video.addEventListener('ended', removePreloader);
-  video.addEventListener('error', removePreloader); // Fallback if video fails to load
-
-  // Attempt Autoplay
-  var playPromise = video.play();
-  
-  if (playPromise !== undefined) {
-    playPromise.catch(function(error) {
-      // Autoplay blocked or failed
-      console.warn("Autoplay prevented or failed, hiding preloader fallback:", error);
+  // Skip button click handler
+  if (skipBtn) {
+    skipBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
       removePreloader();
     });
   }
 
-  // Fallback: If video gets stuck buffering for more than 10 seconds
-  setTimeout(function() {
-    if (!preloader.classList.contains('fade-out')) {
-      console.warn("Preloader timeout fallback triggered");
+  // Event Listeners on video
+  video.addEventListener('ended', removePreloader);
+  
+  // Transition smoothly near the end of playback
+  video.addEventListener('timeupdate', function() {
+    if (video.duration && video.currentTime >= video.duration - 0.25) {
       removePreloader();
     }
-  }, 10000);
+  });
+
+  // Handle errors on video element (using capture phase for source errors as well)
+  video.addEventListener('error', function(err) {
+    console.warn("Preloader video encountered an error, falling back:", err);
+    removePreloader();
+  }, true);
+
+  // Directly attach error listener to source elements
+  var sources = video.getElementsByTagName('source');
+  for (var i = 0; i < sources.length; i++) {
+    sources[i].addEventListener('error', function(e) {
+      console.warn("Preloader <source> error, falling back:", e);
+      removePreloader();
+    });
+  }
+
+  // Handle stalls or aborts
+  video.addEventListener('stalled', function() {
+    console.warn("Preloader video stalled, starting quick timeout");
+    setTimeout(removePreloader, 2000);
+  });
+
+  // Attempt Autoplay
+  try {
+    var playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function(error) {
+        // Autoplay blocked by browser policy or media decoding failure
+        console.warn("Preloader autoplay prevented or failed:", error);
+        removePreloader();
+      });
+    }
+  } catch (err) {
+    console.warn("Error calling video.play():", err);
+    removePreloader();
+  }
+
+  // Safe Fallback: If video fails to start or stalls for any reason, never block user
+  setTimeout(function() {
+    if (!removed) {
+      console.warn("Preloader safety timeout triggered");
+      removePreloader();
+    }
+  }, 4500);
 })();
 
 document.addEventListener('DOMContentLoaded', function () {

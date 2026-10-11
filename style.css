@@ -43,6 +43,33 @@
   }
 }
 
+.preloader-skip-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000000;
+  background: rgba(15, 10, 28, 0.6);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+  user-select: none;
+}
+
+.preloader-skip-btn:hover {
+  background: rgba(15, 10, 28, 0.9);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
 body.preloader-active {
   overflow: hidden !important;
 }
